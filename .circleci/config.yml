@@ -76,7 +76,8 @@ jobs:
 #              curl --location --request POST \
 #                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/docker-whatever/pipeline' \
 #                --header 'Content-Type: application/json' \
-#                -u "${WHATEVER_API_TOKEN}:"
+#                --data '{"branch":"master"}' \
+#                -u "${API_TOKEN}:"
 #            fi
 #
 
