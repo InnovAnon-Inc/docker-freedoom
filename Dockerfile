@@ -10,6 +10,7 @@ COPY --from=innovanon/zennode    /tmp/zennode.txz    /tmp/
 RUN cat   /tmp/*.txz  \
   | tar Jxf - -i -C / \
  && rm -v /tmp/*.txz  \
+ && ldconfig          \
  && command -v                        deutex              \
  && command -v                        ZenNode
 #RUN tar xf                       /tmp/zlib.txz       -C / \
