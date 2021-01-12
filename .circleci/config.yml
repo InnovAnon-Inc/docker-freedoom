@@ -17,6 +17,11 @@ jobs:
       #- run: git submodule sync
       #- run: git submodule update --init
       - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              make openssl tar gzip curl
       #- run:
       #    name: Install dependencies
       #    command: |
@@ -61,6 +66,17 @@ jobs:
               #docker tag lfs-chroot "InnovAnon-Inc/lfs-chroot:${CIRCLE_SHA1}"
               #docker push           "InnovAnon-Inc/lfs-chroot:${CIRCLE_SHA1}"
               docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+              #echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME
               docker push innovanon/freedoom
             fi
+#      - run:
+#          name: Push upstream (docker-whatever)
+#          command: |
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              curl --location --request POST \
+#                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/docker-whatever/pipeline' \
+#                --header 'Content-Type: application/json' \
+#                -u "${WHATEVER_API_TOKEN}:"
+#            fi
+#
 
