@@ -10,22 +10,6 @@ COPY --from=innovanon/zennode    /tmp/zennode.txz    /tmp/
 RUN extract.sh                                            \
  && command -v                        deutex              \
  && command -v                        ZenNode
-#RUN tar xf                       /tmp/zlib.txz       -C / \
-# && tar xf                       /tmp/bzip2.txz      -C / \
-# && tar xf                       /tmp/xz.txz         -C / \
-# && tar xf                       /tmp/libpng.txz     -C / \
-# && tar xf                       /tmp/jpeg-turbo.txz -C / \
-# && tar xf                       /tmp/deutex.txz     -C / \
-# && tar xf                       /tmp/zennode.txz    -C / \
-# && rm -v                        /tmp/zlib.txz            \
-#                                 /tmp/bzip2.txz           \
-#                                 /tmp/xz.txz              \
-#                                 /tmp/libpng.txz          \
-#                                 /tmp/jpeg-turbo.txz      \
-#                                 /tmp/deutex.txz          \
-#                                 /tmp/zennode.txz         \
-# && command -v                        deutex              \
-# && command -v                        ZenNode
 
 FROM builder-05 as freedoom
 ARG LFS=/mnt/lfs
