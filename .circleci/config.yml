@@ -79,17 +79,16 @@ jobs:
               #echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME
               docker push innovanon/freedoom
             fi
-#      - run:
-#          name: Push upstream (docker-whatever)
-#          command: |
-#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#              curl --location --request POST \
-#                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/docker-whatever/pipeline' \
-#                --header 'Content-Type: application/json' \
-#                --data '{"branch":"master"}' \
-#                -u "${API_TOKEN}:"
-#            fi
-#
+      - run:
+          name: Push upstream (zandronum)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl --location --request POST \
+                'https://circleci.com/api/v2/project/github/InnovAnon-Inc/zandronum/pipeline' \
+                --header 'Content-Type: application/json' \
+                --data '{"branch":"master"}' \
+                -u "${API_TOKEN}:"
+            fi
       - slack/notify:
           event: fail
           mentions: '@InnovAnon-Inc'
