@@ -308,10 +308,26 @@ RUN unzip        rainbow_blood.zip   \
  && unzip -o '../rainbow blood.pk3'  \
  && rm -v     ../rainbow_blood.zip   \
              '../rainbow blood.pk3'  \
+ && echo > CVARINFO      \
  && zip -q -Z bzip2 -9               \
          -r /var/games/doom/rainbow_blood.pk3 . \
  && cd      /tmp                     \
- && rm -rf                  ./rainbow_blood
+ && rm -rf                  ./rainbow_blood \
+                            ./rainbow_blood.zip
+
+COPY       ./brutalv20_LE.7.zip ./
+RUN mkdir -v brutalv20_LE.7     \
+ && cd       brutalv20_LE.7     \
+ && unzip ../brutalv20_LE.7.zip \
+ && mkdir -v brutalv20b         \
+ && cd       brutalv20b         \
+ && unzip -o                    \
+          ../brutalv20b.pk3     \
+ && zip -q -Z bzip2 -9 -r       \
+/var/games/doom/brutalv20b.pk3 . \
+ && cd /tmp                     \
+ && rm -rf ./brutalv20_LE.7     \
+           ./brutalv20_LE.7.zip
 
 FROM scratch as squash
 COPY --from=builder /var/games/doom/ /var/games/doom
